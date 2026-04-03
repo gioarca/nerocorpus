@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@headlessui/react": "^2.2.9",
     "@tailwindcss/postcss": "^4.1.16",
     "@tailwindcss/vite": "^4.1.18",
     "canvas-confetti": "^1.9.4",
