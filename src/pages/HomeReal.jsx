@@ -132,7 +132,7 @@ export default function App() {
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className={`px-3 lg:px-4 py-2 text-xs lg:text-sm uppercase tracking-wider font-semibold rounded-full transition-all duration-300 ${
+                    className={`px-3 lg:px-4 py-2 text-xs lg:text-sm tracking-wider font-semibold rounded-full transition-all duration-300 ${
                       activeSection === section
                         ? "bg-black text-white"
                         : scrolled
@@ -140,7 +140,7 @@ export default function App() {
                           : "text-white/90 hover:bg-white/10"
                     }`}
                   >
-                    {section === "chi-sono" ? "Chi Sono" : section}
+                    {section === "chi-sono" ? "chi sono" : section}
                   </button>
                 ),
               )}
@@ -172,7 +172,7 @@ export default function App() {
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl text-sm uppercase tracking-wider font-semibold transition-all ${
+                  className={`block w-full text-left px-4 py-3 rounded-xl text-sm tracking-wider font-semibold transition-all ${
                     activeSection === section
                       ? "bg-black text-white"
                       : "text-gray-700 hover:bg-gray-50"
