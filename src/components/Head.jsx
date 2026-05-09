@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 function Head() {
   useEffect(() => {
     // Imposta il titolo
-    document.title = "Nerocorpus";
+    document.title = "nerocorpus";
 
     // Imposta meta charset
     let charsetMeta = document.querySelector("meta[charset]");
@@ -27,8 +27,8 @@ function Head() {
     if (!faviconLink) {
       faviconLink = document.createElement("link");
       faviconLink.rel = "icon";
-      faviconLink.type = "image/png";
-      faviconLink.href = "/react.svg";
+      faviconLink.type = "image/svg+xml";
+      faviconLink.href = "/favicon.svg";
       faviconLink.sizes = "96x96";
       document.head.appendChild(faviconLink);
     }

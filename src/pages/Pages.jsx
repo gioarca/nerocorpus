@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./Home.jsx";
-import HomeReal from "./HomeReal.jsx";
 import Thanks from "./Thanks.jsx";
 
 function Pages() {
@@ -12,7 +11,7 @@ function Pages() {
     <>
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomeReal />} />
+          <Route path="/" element={<Home />} />
           <Route path="/thanks" element={<Thanks />} />
         </Routes>
       </AnimatePresence>

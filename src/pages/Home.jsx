@@ -1,823 +1,34 @@
-// import React, { useState, useEffect, useRef } from "react";
-// import {
-//   Menu,
-//   X,
-//   Instagram,
-//   Facebook,
-//   MapPin,
-//   Phone,
-//   Mail,
-//   ChevronDown,
-// } from "lucide-react";
-// import emailjs from "@emailjs/browser";
-// import { i, image, img } from "framer-motion/client";
-
-// export default function App() {
-//   const [menuOpen, setMenuOpen] = useState(false);
-//   const [scrolled, setScrolled] = useState(false);
-//   const [activeSection, setActiveSection] = useState("home");
-//   // const [dots, setDots] = useState("");
-//   const form = useRef();
-//   const [isSubmitting, setIsSubmitting] = useState(false);
-//   const [formValues, setFormValues] = useState({
-//     user_name: "",
-//     user_email: "",
-//     user_phone: "",
-//     message: "",
-//   });
-//   // const [privacyAccepted, setPrivacyAccepted] = useState(false);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setScrolled(window.scrollY > 50);
-//     };
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   // useEffect(() => {
-//   //   const interval = setInterval(() => {
-//   //     setDots((prev) => {
-//   //       if (prev === "...") return "";
-//   //       return prev + ".";
-//   //     });
-//   //   }, 500);
-//   //   return () => clearInterval(interval);
-//   // }, []);
-
-//   const handleChange = (e) => {
-//     setFormValues({
-//       ...formValues,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-//     // if (!privacyAccepted) {
-//     //   alert("Devi accettare la privacy policy per continuare.");
-//     //   return;
-//     // }
-//     setIsSubmitting(true);
-
-//     emailjs
-//       .sendForm(
-//         "service_7khyl6i",
-//         "template_jjc3jdm",
-//         form.current,
-//         "jjFvCEL0VM8Mcw5vK",
-//       )
-//       .then(
-//         () => {
-//           console.log("SUCCESS!");
-//           setTimeout(() => {
-//             console.log("Form submitted:", formValues);
-//             setIsSubmitting(false);
-//             setFormValues({
-//               user_name: "",
-//               user_email: "",
-//               user_phone: "",
-//               message: "",
-//             });
-//             // setPrivacyAccepted(false);
-//             window.location.href = "/thanks";
-//           }, 2000);
-//         },
-//         (error) => {
-//           console.error("FAILED...", error.text);
-//           setIsSubmitting(false);
-//         },
-//       );
-//   };
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setScrolled(window.scrollY > 50);
-//     };
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   const scrollToSection = (id) => {
-//     const element = document.getElementById(id);
-//     element?.scrollIntoView({ behavior: "smooth" });
-//     setMenuOpen(false);
-//     setActiveSection(id);
-//   };
-
-//   return (
-//     <div className="bg-white text-black font-sans">
-//       {/* Hero Section */}
-//       <section
-//         id="home"
-//         className="relative h-screen flex items-center justify-center overflow-hidden"
-//       >
-//         {/* <div className="absolute inset-0 bg-linear-to-br from-white to-[#9d2a2a] opacity-100"></div> */}
-//         <div
-//           className="absolute inset-0"
-//           style={{
-//             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a574' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-//           }}
-//         ></div>
-
-//         <div className="relative z-10 text-center px-4 max-w-5xl">
-//           <img
-//             src="/nerocorpus.png"
-//             className="h-80 text-center items-center justify-center mx-auto mb-6"
-//             alt=""
-//           />
-//           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
-//             {/* <span className="block text-[#9d2a2a]  drop-shadow-lg">NERO</span>
-//             <span className="block text-black drop-shadow-lg">CORPUS</span> */}
-//           </h1>
-//           <p className="text-xl sm:text-2xl mb-8 text-red-900 tracking-wide">
-//             L'arte sulla tua pelle • Treviso
-//           </p>
-//           <button
-//             onClick={() => scrollToSection("contatti")}
-//             className="bg-[#d4a574] text-[#1a1a1a] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3d5c4a] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-2xl"
-//           >
-//             Prenota Ora
-//           </button>
-//         </div>
-//       </section>
-//       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-//         <ChevronDown size={40} className="text-[#d4a574]" />
-//       </div>
-
-//       {/* About me Section */}
-//       <section
-//         id="studio"
-//         className="py-24 px-4 bg-linear-to-b from-[#1a1a1a] to-[#2d5f5f]/20"
-//       >
-//         <div className="max-w-6xl mx-auto">
-//           <div className="grid md:grid-cols-2 gap-12 items-center">
-//             <div className="space-y-6">
-//               <h2 className="text-4xl sm:text-5xl font-bold text-[#d4a574] mb-4">
-//                 Lo studio
-//               </h2>
-//               <p className="text-gray-300 text-lg leading-relaxed">
-//                 Benvenuti da Nero Corpus, lo studio tattoo di riferimento nella
-//                 provincia di Treviso. Creiamo opere d'arte uniche che raccontano
-//                 la tua storia attraverso l'inchiostro.
-//               </p>
-//               <p className="text-gray-300 text-lg leading-relaxed">
-//                 Marta combina tecnica impeccabile e creatività senza limiti per
-//                 trasformare le tue idee in tatuaggi indimenticabili.
-//               </p>
-//               <div className="flex flex-wrap gap-4 pt-4">
-//                 {/* <div className="bg-[#2d5f5f] px-6 py-3 rounded-lg">
-//                   <p className="text-[#d4a574] font-bold text-2xl">10+</p>
-//                   <p className="text-sm text-gray-300">Anni di esperienza</p>
-//                 </div> */}
-//                 <div className="bg-[#3d5c4a] px-6 py-3 rounded-lg">
-//                   <p className="text-[#d4a574] font-bold text-2xl">100+</p>
-//                   <p className="text-sm text-gray-300">Tatuaggi realizzati</p>
-//                 </div>
-//               </div>
-//             </div>
-//             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
-//               <div className="absolute inset-0 bg-linear-to-br from-[#2d5f5f] to-[#3d5c4a] flex items-center justify-center">
-//                 {/* <p className="text-6xl text-[#d4a574] opacity-20">NC</p> */}
-//                 <img
-//                   src="https://images.unsplash.com/photo-1595747644932-abb68f85f419?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGF0dG9vJTIwc3R1ZGlvfGVufDB8fDB8fHwy&auto=format&fit=crop&q=60&w=900"
-//                   alt=""
-//                 />
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Section Artista con descrizione */}
-//       <section id="chi-sono" className="py-24 px-4 bg-[#1a1a1a]">
-//         <div className="max-w-6xl mx-auto">
-//           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-[#d4a574]">
-//             Chi sono
-//           </h2>
-//           <div className="flex sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center items-center">
-//             {[
-//               {
-//                 name: "Marta Conte",
-//                 specialty: "Realistico & Ritratti",
-//                 color: "#2d5f5f",
-//                 image:
-//                   "https://images.unsplash.com/photo-1736596059713-cd4e9ad763b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE0fHx0YXR0b28lMjBzdHVkaW98ZW58MHx8MHx8fDI%3D&auto=format&fit=crop&q=60&w=900",
-//               },
-//               // {
-//               //   name: "Sara Bianchi",
-//               //   specialty: "Giapponese & Oriental",
-//               //   color: "#3d5c4a",
-//               //   image:
-//               //     "https://images.unsplash.com/photo-1562259954-bf6c7f31bf60?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1740",
-//               // },
-//               // {
-//               //   name: "Luca Verdi",
-//               //   specialty: "Blackwork & Geometrico",
-//               //   color: "#d4a574",
-//               //   image:
-//               //     "https://images.unsplash.com/photo-1509965478903-f26fb372b4e3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1740",
-//               // },
-//             ].map((artist, i) => (
-//               <div
-//                 key={i}
-//                 className="group relative overflow-hidden rounded-2xl shadow-xl transition-transform hover:scale-105 duration-300"
-//               >
-//                 <div
-//                   className="h-96 flex items-end justify-center p-6"
-//                   style={{
-//                     background: `linear-gradient(to bottom, ${artist.color}40, ${artist.color})`,
-//                   }}
-//                 >
-//                   <div className="text-center">
-//                     <img src={artist.image}></img>
-//                     <h3 className="text-2xl font-bold mt-2 mb-2">
-//                       {artist.name}
-//                     </h3>
-//                     <p className="text-gray-300">{artist.specialty}</p>
-//                   </div>
-//                 </div>
-//                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Gallery Section */}
-//       <section
-//         id="galleria"
-//         className="py-24 px-4 bg-linear-to-b from-[#1a1a1a] to-[#2d5f5f]/30"
-//       >
-//         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-[#d4a574]">
-//             Galleria
-//           </h2>
-//           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-//             {[
-//               {
-//                 i: 1,
-//                 image:
-//                   "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344234/55916220-08B3-4D46-8308-B78FAD279B17_4_5005_c_kheijq.jpg",
-//               },
-//               {
-//                 i: 2,
-//                 image:
-//                   "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344070/DBAEC495-B5B8-407A-A09D-4DF318D2ABB3_1_102_o_yv5qks.jpg",
-//               },
-//               {
-//                 i: 3,
-//                 image:
-//                   "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344133/10324BD3-6ADE-4354-B989-4F3A57B1C8B0_4_5005_c_aopjnl.jpg",
-//               },
-//               {
-//                 i: 4,
-//                 image:
-//                   "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344175/6ECA3D30-95BE-4462-9043-F5EBD19DAC62_4_5005_c_anutgm.jpg",
-//               },
-//               {
-//                 i: 5,
-//                 image:
-//                   "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344162/B23BC8C2-3C5C-446D-938E-4966D690E64E_4_5005_c_xlmh8f.jpg",
-//               },
-//               {
-//                 i: 6,
-//                 image:
-//                   "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344013/1E201C3B-3842-43FB-90AE-C3E2A66B72E9_1_102_o_vspdiz.jpg",
-//               },
-//               {
-//                 i: 7,
-//                 image:
-//                   "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766343716/IMG_5245_cspefw.jpg",
-//               },
-//               {
-//                 i: 8,
-//                 image:
-//                   "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766343652/IMG_5216_cbww33.jpg",
-//               },
-//             ].map((tattoo, i) => (
-//               <div
-//                 key={i}
-//                 className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer shadow-lg"
-//               >
-//                 <div className="w-full h-full bg-linear-to-br flex items-center justify-center">
-//                   <img
-//                     src={
-//                       tattoo.image ||
-//                       `https://res.cloudinary.com/dzoceyg2u/image/upload/v1702138281/placeholder_tattoo_qxqfhi.jpg`
-//                     }
-//                     alt={`Tattoo ${i}`}
-//                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-//                   />
-//                 </div>
-//                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-center justify-center">
-//                   <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
-//                     Tattoo #{i}
-//                   </span>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Contact Section */}
-//       <section id="contatti" className="py-24 px-4 bg-[#1a1a1a]">
-//         <div className="max-w-4xl mx-auto">
-//           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-[#d4a574]">
-//             Contattaci
-//           </h2>
-//           <div className="grid md:grid-cols-2 gap-12">
-//             <div className="space-y-6">
-//               <h3 className="text-2xl font-bold text-[#2d5f5f] mb-6">
-//                 Vieni a trovarci
-//               </h3>
-//               <div className="flex items-start gap-4">
-//                 <MapPin className="text-[#d4a574] mt-1 shrink-0" size={24} />
-//                 <div>
-//                   <p className="text-gray-400">Treviso (TV)</p>
-//                 </div>
-//               </div>
-//               {/* <div className="flex items-center gap-4">
-//                 <Phone className="text-[#d4a574]" size={24} />
-//                 <p className="text-gray-300">+39 333 123 4567</p>
-//               </div> */}
-//               <a href="mailto:martaconte.tattoo@gmail.com">
-//                 <div className="flex items-center gap-4">
-//                   <Mail className="text-[#d4a574]" size={24} />
-//                   <p className="text-gray-300">Mail</p>
-//                 </div>
-//               </a>
-//               {/* <div className="flex gap-4 pt-6">
-//                 <a
-//                   href="#"
-//                   className="bg-[#2d5f5f] p-3 rounded-full hover:bg-[#3d5c4a] transition-colors"
-//                 >
-//                   <Instagram size={24} />
-//                 </a>
-//                 <a
-//                   href="#"
-//                   className="bg-[#2d5f5f] p-3 rounded-full hover:bg-[#3d5c4a] transition-colors"
-//                 >
-//                   <Facebook size={24} />
-//                 </a>
-//               </div> */}
-//             </div>
-
-//             <div className="bg-[#2d5f5f]/20 p-8 rounded-2xl border border-[#2d5f5f]/50">
-//               <h3 className="text-xl font-bold mb-6">
-//                 Prenota la tua consulenza
-//               </h3>
-//               <form ref={form} onSubmit={sendEmail}>
-//                 <div className="space-y-4">
-//                   <label
-//                     htmlFor="user_name"
-//                     className="block text-sm font-bold text-zinc-300 mb-2 tracking-wide"
-//                   >
-//                     Nome<span className="text-amber-500">*</span>
-//                   </label>
-//                   <input
-//                     type="text"
-//                     id="user_name"
-//                     name="user_name"
-//                     value={formValues.user_name}
-//                     onChange={handleChange}
-//                     required
-//                     placeholder="Nome"
-//                     className="w-full bg-[#1a1a1a] border border-[#2d5f5f] rounded-lg px-4 py-3 focus:outline-none focus:border-[#d4a574] transition-colors"
-//                   />
-//                   <label
-//                     htmlFor="user_email"
-//                     className="block text-sm font-bold text-zinc-300 mb-2 uppercase tracking-wide"
-//                   >
-//                     Email<span className="text-amber-500">*</span>
-//                   </label>
-//                   <input
-//                     type="email"
-//                     id="user_email"
-//                     name="user_email"
-//                     value={formValues.user_email}
-//                     onChange={handleChange}
-//                     placeholder="Email"
-//                     className="w-full bg-[#1a1a1a] border border-[#2d5f5f] rounded-lg px-4 py-3 focus:outline-none focus:border-[#d4a574] transition-colors"
-//                   />
-//                   <label
-//                     htmlFor="user_phone"
-//                     className="block text-sm font-bold text-zinc-300 mb-2 uppercase tracking-wide"
-//                   >
-//                     Telefono{" "}
-//                     <span className="text-zinc-600 text-xs normal-case">
-//                       (opzionale)
-//                     </span>
-//                   </label>
-//                   <input
-//                     type="tel"
-//                     id="user_phone"
-//                     name="user_phone"
-//                     value={formValues.user_phone}
-//                     onChange={handleChange}
-//                     placeholder="Telefono"
-//                     className="w-full bg-[#1a1a1a] border border-[#2d5f5f] rounded-lg px-4 py-3 focus:outline-none focus:border-[#d4a574] transition-colors"
-//                   />
-
-//                   {/* Messaggio */}
-//                   <label
-//                     htmlFor="message"
-//                     className="block text-sm font-bold text-zinc-300 mb-2 uppercase tracking-wide"
-//                   >
-//                     Messaggio{" "}
-//                     <span className="text-zinc-600 text-xs normal-case">
-//                       (opzionale)
-//                     </span>
-//                   </label>
-//                   <textarea
-//                     id="message"
-//                     name="message"
-//                     value={formValues.messaggio}
-//                     onChange={handleChange}
-//                     placeholder="Descrivi la tua idea"
-//                     rows="4"
-//                     className="w-full bg-[#1a1a1a] border border-[#2d5f5f] rounded-lg px-4 py-3 focus:outline-none focus:border-[#d4a574] transition-colors resize-none"
-//                   ></textarea>
-//                   <button
-//                     disabled={isSubmitting}
-//                     type="submit"
-//                     className="w-full bg-[#d4a574] text-[#1a1a1a] py-3 rounded-lg font-semibold hover:bg-[#3d5c4a] hover:text-white transition-all duration-300 transform hover:scale-105"
-//                   >
-//                     Invia Richiesta
-//                   </button>
-//                 </div>
-//               </form>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
-
-// import React, { useState, useEffect, useRef } from "react";
-// import {
-//   Menu,
-//   X,
-//   Instagram,
-//   Facebook,
-//   MapPin,
-//   Phone,
-//   Mail,
-//   ChevronDown,
-// } from "lucide-react";
-// import emailjs from "@emailjs/browser";
-
-// export default function App() {
-//   const [menuOpen, setMenuOpen] = useState(false);
-//   const [scrolled, setScrolled] = useState(false);
-//   const [activeSection, setActiveSection] = useState("home");
-//   const [isSubmitting, setIsSubmitting] = useState(false);
-//   const form = useRef();
-
-//   const [formValues, setFormValues] = useState({
-//     user_name: "",
-//     user_email: "",
-//     user_phone: "",
-//     message: "",
-//   });
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setScrolled(window.scrollY > 50);
-//     };
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   const handleChange = (e) => {
-//     setFormValues({
-//       ...formValues,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-//     setIsSubmitting(true);
-
-//     emailjs
-//       .sendForm(
-//         "service_7khyl6i",
-//         "template_jjc3jdm",
-//         form.current,
-//         "jjFvCEL0VM8Mcw5vK",
-//       )
-//       .then(
-//         () => {
-//           console.log("SUCCESS!");
-//           setTimeout(() => {
-//             setIsSubmitting(false);
-//             setFormValues({
-//               user_name: "",
-//               user_email: "",
-//               user_phone: "",
-//               message: "",
-//             });
-//             window.location.href = "/thanks";
-//           }, 2000);
-//         },
-//         (error) => {
-//           console.error("FAILED...", error.text);
-//           setIsSubmitting(false);
-//         },
-//       );
-//   };
-
-//   const scrollToSection = (id) => {
-//     const element = document.getElementById(id);
-//     element?.scrollIntoView({ behavior: "smooth" });
-//     setMenuOpen(false);
-//     setActiveSection(id);
-//   };
-
-//   return (
-//     <div className="bg-white text-black font-sans">
-//       {/* Hero Section */}
-//       <section
-//         id="home"
-//         className="relative h-screen flex items-center justify-center overflow-hidden"
-//       >
-//         <div
-//           className="absolute inset-0"
-//           style={{
-//             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a574' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-//           }}
-//         ></div>
-
-//         <div className="relative z-10 text-center px-4 max-w-5xl">
-//           <img
-//             src="/nerocorpus.png"
-//             className="h-80 mx-auto mb-6"
-//             alt="Nero Corpus Logo"
-//           />
-//           <p className="text-xl sm:text-2xl mb-8 text-red-900 tracking-wide">
-//             L'arte sulla tua pelle • Treviso
-//           </p>
-//           <button
-//             onClick={() => scrollToSection("contatti")}
-//             className="bg-[#d4a574] text-[#1a1a1a] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3d5c4a] hover:text-white transition-all duration-300 transform hover:scale-105 shadow-2xl"
-//           >
-//             Prenota Ora
-//           </button>
-//         </div>
-
-//         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-//           <ChevronDown size={40} className="text-[#d4a574]" />
-//         </div>
-//       </section>
-
-//       {/* Studio Section */}
-//       <section
-//         id="studio"
-//         className="py-24 px-4 bg-gradient-to-b from-[#1a1a1a] to-[#1a1a1a]"
-//       >
-//         <div className="max-w-6xl mx-auto">
-//           <div className="grid md:grid-cols-2 gap-12 items-center">
-//             <div className="space-y-6">
-//               <h2 className="text-4xl sm:text-5xl font-bold text-[#d4a574] mb-4">
-//                 Lo studio
-//               </h2>
-//               <p className="text-gray-300 text-lg leading-relaxed">
-//                 Benvenuti da Nero Corpus, lo studio tattoo di riferimento nella
-//                 provincia di Treviso. Creiamo opere d'arte uniche che raccontano
-//                 la tua storia attraverso l'inchiostro.
-//               </p>
-//               <p className="text-gray-300 text-lg leading-relaxed">
-//                 Marta combina tecnica impeccabile e creatività senza limiti per
-//                 trasformare le tue idee in tatuaggi indimenticabili.
-//               </p>
-//               <div className="flex flex-wrap gap-4 pt-4">
-//                 <div className="bg-[#3d5c4a] px-6 py-3 rounded-lg">
-//                   <p className="text-[#d4a574] font-bold text-2xl">100+</p>
-//                   <p className="text-sm text-gray-300">Tatuaggi realizzati</p>
-//                 </div>
-//               </div>
-//             </div>
-//             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
-//               <img
-//                 src="https://images.unsplash.com/photo-1595747644932-abb68f85f419?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGF0dG9vJTIwc3R1ZGlvfGVufDB8fDB8fHwy&auto=format&fit=crop&q=60&w=900"
-//                 alt="Studio Nero Corpus"
-//                 className="w-full h-full object-cover"
-//               />
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Chi Sono Section */}
-//       <section id="chi-sono" className="py-24 px-4 bg-[#1a1a1a]">
-//         <div className="max-w-6xl mx-auto">
-//           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-[#d4a574]">
-//             Chi sono
-//           </h2>
-//           <div className="flex justify-center">
-//             <div className="group relative overflow-hidden rounded-2xl shadow-xl transition-transform hover:scale-105 duration-300 max-w-md w-full">
-//               <div className="relative h-96">
-//                 <img
-//                   src="https://images.unsplash.com/photo-1736596059713-cd4e9ad763b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE0fHx0YXR0b28lMjBzdHVkaW98ZW58MHx8MHx8fDI%3D&auto=format&fit=crop&q=60&w=900"
-//                   alt="Marta Conte"
-//                   className="w-full h-full object-cover"
-//                 />
-//                 <div className="absolute inset-0 bg-gradient-to-t from-[#2d5f5f] via-transparent to-transparent"></div>
-//                 <div className="absolute bottom-0 left-0 right-0 p-6 text-center text-white">
-//                   <h3 className="text-2xl font-bold mb-2">Marta Conte</h3>
-//                   <p className="text-gray-200">Realistico & Ritratti</p>
-//                 </div>
-//               </div>
-//               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Gallery Section */}
-//       <section
-//         id="galleria"
-//         className="py-24 px-4 bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f]"
-//       >
-//         <div className="max-w-7xl mx-auto">
-//           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-[#d4a574]">
-//             Galleria
-//           </h2>
-//           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-//             {[
-//               "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344234/55916220-08B3-4D46-8308-B78FAD279B17_4_5005_c_kheijq.jpg",
-//               "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344070/DBAEC495-B5B8-407A-A09D-4DF318D2ABB3_1_102_o_yv5qks.jpg",
-//               "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344133/10324BD3-6ADE-4354-B989-4F3A57B1C8B0_4_5005_c_aopjnl.jpg",
-//               "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344175/6ECA3D30-95BE-4462-9043-F5EBD19DAC62_4_5005_c_anutgm.jpg",
-//               "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344162/B23BC8C2-3C5C-446D-938E-4966D690E64E_4_5005_c_xlmh8f.jpg",
-//               "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344013/1E201C3B-3842-43FB-90AE-C3E2A66B72E9_1_102_o_vspdiz.jpg",
-//               "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766343716/IMG_5245_cspefw.jpg",
-//               "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766343652/IMG_5216_cbww33.jpg",
-//             ].map((image, i) => (
-//               <div
-//                 key={i}
-//                 className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer shadow-lg"
-//               >
-//                 <img
-//                   src={image}
-//                   alt={`Tattoo ${i + 1}`}
-//                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-//                 />
-//                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-center justify-center">
-//                   <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
-//                     Tattoo #{i + 1}
-//                   </span>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Contact Section */}
-//       <section id="contatti" className="py-24 px-4 bg-[#1a1a1a]">
-//         <div className="max-w-4xl mx-auto">
-//           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-[#d4a574]">
-//             Contattaci
-//           </h2>
-//           <div className="grid md:grid-cols-2 gap-12">
-//             <div className="space-y-6">
-//               <h3 className="text-2xl font-bold text-[#d4a574] mb-6">
-//                 Vieni a trovarci
-//               </h3>
-//               <div className="flex items-start gap-4">
-//                 <MapPin className="text-[#d4a574] mt-1 shrink-0" size={24} />
-//                 <div>
-//                   <p className="text-gray-300">Treviso (TV)</p>
-//                 </div>
-//               </div>
-//               <a
-//                 href="mailto:martaconte.tattoo@gmail.com"
-//                 className="flex items-center gap-4 hover:text-[#d4a574] transition-colors"
-//               >
-//                 <Mail className="text-[#d4a574]" size={24} />
-//                 <p className="text-gray-300">martaconte.tattoo@gmail.com</p>
-//               </a>
-//             </div>
-
-//             <div className="bg-[#2d5f5f]/20 p-8 rounded-2xl border border-[#2d5f5f]/50">
-//               <h3 className="text-xl font-bold mb-6 text-white">
-//                 Prenota la tua consulenza
-//               </h3>
-//               <form ref={form} onSubmit={sendEmail} className="space-y-4">
-//                 <div>
-//                   <label
-//                     htmlFor="user_name"
-//                     className="block text-sm font-bold text-zinc-300 mb-2 tracking-wide"
-//                   >
-//                     Nome<span className="text-amber-500">*</span>
-//                   </label>
-//                   <input
-//                     type="text"
-//                     id="user_name"
-//                     name="user_name"
-//                     value={formValues.user_name}
-//                     onChange={handleChange}
-//                     required
-//                     placeholder="Il tuo nome"
-//                     className="w-full bg-[#1a1a1a] border border-[#2d5f5f] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#d4a574] transition-colors"
-//                   />
-//                 </div>
-
-//                 <div>
-//                   <label
-//                     htmlFor="user_email"
-//                     className="block text-sm font-bold text-zinc-300 mb-2 tracking-wide"
-//                   >
-//                     Email<span className="text-amber-500">*</span>
-//                   </label>
-//                   <input
-//                     type="email"
-//                     id="user_email"
-//                     name="user_email"
-//                     value={formValues.user_email}
-//                     onChange={handleChange}
-//                     required
-//                     placeholder="tua@email.com"
-//                     className="w-full bg-[#1a1a1a] border border-[#2d5f5f] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#d4a574] transition-colors"
-//                   />
-//                 </div>
-
-//                 <div>
-//                   <label
-//                     htmlFor="user_phone"
-//                     className="block text-sm font-bold text-zinc-300 mb-2 tracking-wide"
-//                   >
-//                     Telefono{" "}
-//                     <span className="text-zinc-500 text-xs font-normal">
-//                       (opzionale)
-//                     </span>
-//                   </label>
-//                   <input
-//                     type="tel"
-//                     id="user_phone"
-//                     name="user_phone"
-//                     value={formValues.user_phone}
-//                     onChange={handleChange}
-//                     placeholder="+39 123 456 7890"
-//                     className="w-full bg-[#1a1a1a] border border-[#2d5f5f] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#d4a574] transition-colors"
-//                   />
-//                 </div>
-
-//                 <div>
-//                   <label
-//                     htmlFor="message"
-//                     className="block text-sm font-bold text-zinc-300 mb-2 tracking-wide"
-//                   >
-//                     Messaggio{" "}
-//                     <span className="text-zinc-500 text-xs font-normal">
-//                       (opzionale)
-//                     </span>
-//                   </label>
-//                   <textarea
-//                     id="message"
-//                     name="message"
-//                     value={formValues.message}
-//                     onChange={handleChange}
-//                     placeholder="Descrivi la tua idea per il tatuaggio..."
-//                     rows="4"
-//                     className="w-full bg-[#1a1a1a] border border-[#2d5f5f] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#d4a574] transition-colors resize-none"
-//                   ></textarea>
-//                 </div>
-
-//                 <button
-//                   disabled={isSubmitting}
-//                   type="submit"
-//                   className="w-full bg-[#d4a574] text-[#1a1a1a] py-3 rounded-lg font-semibold hover:bg-[#3d5c4a] hover:text-white transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-//                 >
-//                   {isSubmitting ? "Invio in corso..." : "Invia Richiesta"}
-//                 </button>
-//               </form>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
-
 import React, { useState, useEffect, useRef } from "react";
 import {
   Menu,
   X,
-  Instagram,
-  Facebook,
   MapPin,
-  Phone,
   Mail,
   ChevronDown,
   ArrowRight,
   Sparkles,
+  LampDesk,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
+
+const InstagramIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -825,6 +36,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useRef();
+  const [lightbox, setLightbox] = useState({ open: false, index: 0 });
 
   const [formValues, setFormValues] = useState({
     user_name: "",
@@ -836,8 +48,6 @@ export default function App() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Update active section based on scroll position
       const sections = ["home", "studio", "chi-sono", "galleria", "contatti"];
       const current = sections.find((section) => {
         const element = document.getElementById(section);
@@ -849,22 +59,36 @@ export default function App() {
       });
       if (current) setActiveSection(current);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!lightbox.open) return;
+    const handleKey = (e) => {
+      if (e.key === "Escape") setLightbox((l) => ({ ...l, open: false }));
+      if (e.key === "ArrowRight")
+        setLightbox((l) => ({
+          ...l,
+          index: (l.index + 1) % galleryImages.length,
+        }));
+      if (e.key === "ArrowLeft")
+        setLightbox((l) => ({
+          ...l,
+          index: (l.index - 1 + galleryImages.length) % galleryImages.length,
+        }));
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox.open]);
+
   const handleChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
-    });
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     emailjs
       .sendForm(
         "service_7khyl6i",
@@ -897,22 +121,29 @@ export default function App() {
     const offset = 80;
     const elementPosition = element?.getBoundingClientRect().top || 0;
     const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-
+    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     setMenuOpen(false);
     setActiveSection(id);
   };
 
+  const galleryImages = [
+    "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344234/55916220-08B3-4D46-8308-B78FAD279B17_4_5005_c_kheijq.jpg",
+    "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344070/DBAEC495-B5B8-407A-A09D-4DF318D2ABB3_1_102_o_yv5qks.jpg",
+    "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344133/10324BD3-6ADE-4354-B989-4F3A57B1C8B0_4_5005_c_aopjnl.jpg",
+    "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344175/6ECA3D30-95BE-4462-9043-F5EBD19DAC62_4_5005_c_anutgm.jpg",
+    "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344162/B23BC8C2-3C5C-446D-938E-4966D690E64E_4_5005_c_xlmh8f.jpg",
+    "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344013/1E201C3B-3842-43FB-90AE-C3E2A66B72E9_1_102_o_vspdiz.jpg",
+    "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766343716/IMG_5245_cspefw.jpg",
+    "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766343652/IMG_5216_cbww33.jpg",
+    // aggiungi qui le altre URL Cloudinary
+  ];
+
   return (
     <div className="bg-white text-black font-sans antialiased">
-      {/* Navigation - Fixed Header */}
+      {/* Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+          scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -920,13 +151,9 @@ export default function App() {
             {/* Logo */}
             <button
               onClick={() => scrollToSection("home")}
-              className="flex-shrink-0 group"
+              className="shrink-0 group"
             >
-              <span
-                className={`text-xl sm:text-2xl font-black tracking-tighter transition-colors ${
-                  scrolled ? "text-black" : "text-white"
-                } group-hover:text-red-900`}
-              >
+              <span className="font-pirata-one text-xl sm:text-2xl font-black tracking-tighter text-black group-hover:text-red-900 transition-colors">
                 NERO CORPUS
               </span>
             </button>
@@ -938,31 +165,46 @@ export default function App() {
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className={`px-3 lg:px-4 py-2 text-xs lg:text-sm uppercase tracking-wider font-semibold rounded-full transition-all duration-300 ${
+                    className={`px-3 lg:px-4 py-2 text-xs lg:text-sm tracking-wider font-semibold rounded-full transition-all duration-300 ${
                       activeSection === section
                         ? "bg-black text-white"
-                        : scrolled
-                          ? "text-gray-700 hover:bg-gray-100"
-                          : "text-white/90 hover:bg-white/10"
+                        : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
-                    {section === "chi-sono" ? "Chi Sono" : section}
+                    {section === "chi-sono" ? "chi sono" : section}
                   </button>
                 ),
               )}
+              {/* Instagram link */}
+              <a
+                href="https://www.instagram.com/nerocorpus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 p-2 text-gray-700 hover:text-red-900 transition-colors"
+                aria-label="Instagram"
+              >
+                <InstagramIcon />
+              </a>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className={`md:hidden p-2 rounded-lg transition-colors ${
-                scrolled
-                  ? "text-black hover:bg-gray-100"
-                  : "text-white hover:bg-white/10"
-              }`}
-            >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile: Instagram + Hamburger */}
+            <div className="flex items-center gap-2 md:hidden">
+              <a
+                href="https://www.instagram.com/nerocorpus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-black hover:text-red-900 transition-colors"
+                aria-label="Instagram"
+              >
+                <InstagramIcon />
+              </a>
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="p-2 rounded-lg text-black hover:bg-gray-100 transition-colors"
+              >
+                {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -978,7 +220,7 @@ export default function App() {
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl text-sm uppercase tracking-wider font-semibold transition-all ${
+                  className={`block w-full text-left px-4 py-3 rounded-xl text-sm tracking-wider font-semibold transition-all ${
                     activeSection === section
                       ? "bg-black text-white"
                       : "text-gray-700 hover:bg-gray-50"
@@ -992,62 +234,51 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Hero Section - Full Screen Impact */}
+      {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
       >
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black"></div>
-        </div>
-
-        {/* Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20 sm:pt-0">
           <div className="mb-6 sm:mb-8">
             <img
               src="/nerocorpus.png"
-              className="h-48 sm:h-64 lg:h-80 mx-auto drop-shadow-2xl"
+              className="h-48 sm:h-64 lg:h-80 mx-auto"
               alt="Nero Corpus Logo"
             />
           </div>
 
           <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-12">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl text-white/90 tracking-[0.3em] font-light uppercase">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl text-black tracking-[0.1em] font-light uppercase">
               L'arte sulla tua pelle
             </h1>
-            <p className="text-base sm:text-lg text-white/70 font-light">
-              Treviso
+            <p className="text-base sm:text-lg text-gray-500 font-light">
+              Quinto di Treviso (TV)
             </p>
           </div>
 
           <button
             onClick={() => scrollToSection("contatti")}
-            className="group relative inline-flex items-center gap-2 bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-bold hover:bg-red-900 hover:text-white transition-all duration-500 transform hover:scale-105 shadow-2xl overflow-hidden"
+            className="group relative inline-flex items-center gap-2 bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-bold hover:bg-red-900 transition-all duration-500 transform hover:scale-105 shadow-2xl"
           >
-            <span className="relative z-10">Prenota Ora</span>
+            <a href="#contatti" className="block">
+              <span>Prenota Ora</span>
+            </a>
             <ArrowRight
               size={18}
-              className="relative z-10 group-hover:translate-x-1 transition-transform"
+              className="group-hover:translate-x-1 transition-transform"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-red-900 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
           </button>
         </div>
 
         {/* Scroll Indicator */}
         <button
           onClick={() => scrollToSection("studio")}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer group"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group"
         >
           <ChevronDown
             size={32}
-            className="text-white/60 group-hover:text-white transition-colors"
+            className="text-gray-400 group-hover:text-black transition-colors"
           />
         </button>
       </section>
@@ -1056,29 +287,24 @@ export default function App() {
       <section id="studio" className="py-16 sm:py-24 lg:py-32 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Image - Mobile First */}
             <div className="order-1 lg:order-2">
               <div className="relative aspect-4/5 sm:aspect-square rounded-3xl overflow-hidden shadow-2xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1595747644932-abb68f85f419?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGF0dG9vJTIwc3R1ZGlvfGVufDB8fDB8fHwy&auto=format&fit=crop&q=60&w=900"
+                  src="https://images.unsplash.com/photo-1595747644932-abb68f85f419?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900"
                   alt="Studio Nero Corpus"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             </div>
 
-            {/* Text */}
             <div className="order-2 lg:order-1 space-y-6 sm:space-y-8">
               <div className="space-y-3 sm:space-y-4">
                 <div className="inline-flex items-center gap-2 text-red-900 text-xs sm:text-sm uppercase tracking-wider font-bold">
-                  <Sparkles size={16} />
+                  <LampDesk size={16} />
                   <span>Il Nostro Studio</span>
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
-                  Dove l'arte
-                  <br />
-                  prende vita
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight font-pirata-one">
+                  Dove l'arte prende vita
                 </h2>
               </div>
 
@@ -1096,7 +322,6 @@ export default function App() {
                 </p>
               </div>
 
-              {/* Stats */}
               <div className="flex flex-wrap gap-4 pt-4">
                 <div className="bg-gray-50 px-6 py-4 rounded-2xl border border-gray-100 hover:border-red-900 hover:shadow-lg transition-all duration-300">
                   <p className="text-red-900 font-black text-3xl mb-1">100+</p>
@@ -1120,7 +345,7 @@ export default function App() {
             <div className="inline-flex items-center gap-2 text-red-900 text-xs sm:text-sm uppercase tracking-wider font-bold mb-4">
               <span>L'Artista</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-pirata-one">
               Chi sono
             </h2>
           </div>
@@ -1128,18 +353,15 @@ export default function App() {
           <div className="flex justify-center">
             <div className="max-w-md w-full">
               <div className="group relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-3xl">
-                {/* Image Container */}
-                <div className="relative aspect-[3/4]">
+                <div className="relative aspect-3/4">
                   <img
-                    src="https://images.unsplash.com/photo-1736596059713-cd4e9ad763b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE0fHx0YXR0b28lMjBzdHVkaW98ZW58MHx8MHx8fDI%3D&auto=format&fit=crop&q=60&w=900"
+                    src="https://images.unsplash.com/photo-1736596059713-cd4e9ad763b6?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900"
                     alt="Marta Conte"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  {/* Gradient overlay corretto */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-black/30 to-transparent"></div>
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-
-                  {/* Text Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
                     <h3 className="text-2xl sm:text-3xl font-black mb-2">
                       Marta Conte
@@ -1149,8 +371,6 @@ export default function App() {
                     </p>
                   </div>
                 </div>
-
-                {/* Hover Effect */}
                 <div className="absolute inset-0 bg-red-900/0 group-hover:bg-red-900/10 transition-all duration-500"></div>
               </div>
             </div>
@@ -1159,46 +379,101 @@ export default function App() {
       </section>
 
       {/* Gallery Section */}
+      {/* Gallery Section */}
       <section id="galleria" className="py-16 sm:py-24 lg:py-32 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <div className="inline-flex items-center gap-2 text-red-900 text-xs sm:text-sm uppercase tracking-wider font-bold mb-4">
               <span>Il Portfolio</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-pirata-one">
               Galleria
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-            {[
-              "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344234/55916220-08B3-4D46-8308-B78FAD279B17_4_5005_c_kheijq.jpg",
-              "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344070/DBAEC495-B5B8-407A-A09D-4DF318D2ABB3_1_102_o_yv5qks.jpg",
-              "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344133/10324BD3-6ADE-4354-B989-4F3A57B1C8B0_4_5005_c_aopjnl.jpg",
-              "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344175/6ECA3D30-95BE-4462-9043-F5EBD19DAC62_4_5005_c_anutgm.jpg",
-              "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344162/B23BC8C2-3C5C-446D-938E-4966D690E64E_4_5005_c_xlmh8f.jpg",
-              "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766344013/1E201C3B-3842-43FB-90AE-C3E2A66B72E9_1_102_o_vspdiz.jpg",
-              "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766343716/IMG_5245_cspefw.jpg",
-              "https://res.cloudinary.com/dzoceyg2u/image/upload/v1766343652/IMG_5216_cbww33.jpg",
-            ].map((image, i) => (
+          {/* Grid */}
+          <div className="columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
+            {galleryImages.map((image, i) => (
               <div
                 key={i}
-                className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500"
+                onClick={() => setLightbox({ open: true, index: i })}
+                className="break-inside-avoid relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500"
               >
                 <img
                   src={image}
                   alt={`Tattoo ${i + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
-                  <span className="text-white font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform group-hover:scale-110">
-                    Tattoo #{i + 1}
-                  </span>
+                  {/* <span className="text-white font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 tracking-widest uppercase">
+                    Vedi
+                  </span> */}
                 </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Lightbox */}
+        {lightbox.open && (
+          <div
+            className="fixed inset-0 z-100 bg-black/95 flex items-center justify-center"
+            onClick={() => setLightbox((l) => ({ ...l, open: false }))}
+          >
+            {/* Chiudi */}
+            <button
+              onClick={() => setLightbox((l) => ({ ...l, open: false }))}
+              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors p-2"
+              aria-label="Chiudi"
+            >
+              <X size={32} />
+            </button>
+
+            {/* Freccia sinistra */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightbox((l) => ({
+                  ...l,
+                  index:
+                    (l.index - 1 + galleryImages.length) % galleryImages.length,
+                }));
+              }}
+              className="absolute left-4 text-white/70 hover:text-white transition-colors p-2"
+              aria-label="Precedente"
+            >
+              <ChevronDown size={36} className="rotate-90" />
+            </button>
+
+            {/* Immagine */}
+            <img
+              src={galleryImages[lightbox.index]}
+              alt={`Tattoo ${lightbox.index + 1}`}
+              onClick={(e) => e.stopPropagation()}
+              className="max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-2xl"
+            />
+
+            {/* Freccia destra */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightbox((l) => ({
+                  ...l,
+                  index: (l.index + 1) % galleryImages.length,
+                }));
+              }}
+              className="absolute right-4 text-white/70 hover:text-white transition-colors p-2"
+              aria-label="Successivo"
+            >
+              <ChevronDown size={36} className="-rotate-90" />
+            </button>
+
+            {/* Contatore */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm tracking-widest">
+              {lightbox.index + 1} / {galleryImages.length}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Contact Section */}
@@ -1211,7 +486,7 @@ export default function App() {
             <div className="inline-flex items-center gap-2 text-red-900 text-xs sm:text-sm uppercase tracking-wider font-bold mb-4">
               <span>Contatti</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 font-pirata-one">
               Prenota ora
             </h2>
             <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
@@ -1220,13 +495,11 @@ export default function App() {
           </div>
 
           <div className="grid md:grid-cols-5 gap-8 lg:gap-12">
-            {/* Contact Info - Mobile First */}
             <div className="md:col-span-2 space-y-6">
               <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-                <h3 className="text-xl sm:text-2xl font-black mb-6">
+                <h3 className="text-xl sm:text-2xl font-black mb-6 font-pirata-one">
                   Vieni a trovarci
                 </h3>
-
                 <div className="space-y-4">
                   <div className="flex items-start gap-4 group">
                     <div className="mt-1 p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
@@ -1237,7 +510,6 @@ export default function App() {
                       <p className="text-gray-600">Treviso (TV)</p>
                     </div>
                   </div>
-
                   <a
                     href="mailto:martaconte.tattoo@gmail.com"
                     className="flex items-start gap-4 group hover:bg-gray-50 p-3 -m-3 rounded-xl transition-colors"
@@ -1252,14 +524,30 @@ export default function App() {
                       </p>
                     </div>
                   </a>
+
+                  {/* Instagram nei contatti */}
+                  <a
+                    href="https://www.instagram.com/nerocorpus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 group hover:bg-gray-50 p-3 -m-3 rounded-xl transition-colors"
+                  >
+                    <div className="mt-1 p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
+                      <InstagramIcon className="text-red-900" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-black mb-1">Instagram</p>
+                      <p className="text-gray-600">@nerocorpus</p>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Form */}
             <div className="md:col-span-3">
               <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-                <h3 className="text-xl sm:text-2xl font-black mb-6">
+                <h3 className="text-xl sm:text-2xl font-black mb-6 font-pirata-one">
                   Richiedi una consulenza
                 </h3>
 
