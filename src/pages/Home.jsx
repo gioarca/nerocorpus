@@ -355,7 +355,7 @@ export default function App() {
               <div className="group relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-3xl">
                 <div className="relative aspect-3/4">
                   <img
-                    src="https://images.unsplash.com/photo-1736596059713-cd4e9ad763b6?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900"
+                    src="https://res.cloudinary.com/dzoceyg2u/image/upload/v1781255060/bc0ecd1a-c58e-41af-82ca-525f2fb6b861_ytao9c.jpg"
                     alt="Marta Conte"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
@@ -507,7 +507,12 @@ export default function App() {
                     </div>
                     <div>
                       <p className="font-semibold text-black mb-1">Indirizzo</p>
-                      <p className="text-gray-600">Treviso (TV)</p>
+                      <a
+                        href="https://maps.app.goo.gl/oheoVoJVqyKPyNbr9"
+                        className="text-red-900"
+                      >
+                        Via dell'Arma di Cavalleria 4 · Quinto di Treviso (TV)
+                      </a>
                     </div>
                   </div>
                   <a
