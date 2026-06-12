@@ -501,20 +501,28 @@ export default function App() {
                   Vieni a trovarci
                 </h3>
                 <div className="space-y-4">
-                  <div className="flex items-start gap-4 group">
-                    <div className="mt-1 p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
-                      <MapPin className="text-red-900" size={20} />
+                  {/* Mappa */}
+                  <a
+                    href="https://maps.app.goo.gl/oheoVoJVqyKPyNbr9"
+                    className="flex items-start gap-4 group hover:bg-gray-50 p-3 -m-3 rounded-xl transition-colors"
+                  >
+                    <div className="flex items-start gap-4 group">
+                      <div className="mt-1 p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
+                        <MapPin className="text-red-900" size={20} />
+                      </div>
+
+                      <div>
+                        <p className="font-semibold text-black mb-1">
+                          Indirizzo
+                        </p>
+                        <p className="text-red-900">
+                          Via dell'Arma di Cavalleria 4 · Quinto di Treviso (TV)
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-semibold text-black mb-1">Indirizzo</p>
-                      <a
-                        href="https://maps.app.goo.gl/oheoVoJVqyKPyNbr9"
-                        className="text-red-900"
-                      >
-                        Via dell'Arma di Cavalleria 4 · Quinto di Treviso (TV)
-                      </a>
-                    </div>
-                  </div>
+                  </a>
+
+                  {/* Mail */}
                   <a
                     href="mailto:martaconte.tattoo@gmail.com"
                     className="flex items-start gap-4 group hover:bg-gray-50 p-3 -m-3 rounded-xl transition-colors"
