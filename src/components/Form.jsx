@@ -33,7 +33,7 @@ const inputBase =
 
 const labelClass = "block text-sm font-bold text-gray-700 mb-2";
 
-export default function ContactForm({ onSuccess }) {
+export default function Form({ onSuccess }) {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");

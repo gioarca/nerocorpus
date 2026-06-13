@@ -397,7 +397,9 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <Form />
+      <div id="contatti" className="py-16 sm:py-24 lg:py-32 px-4 bg-gray-50">
+        <Form />
+      </div>
     </div>
   );
 }
