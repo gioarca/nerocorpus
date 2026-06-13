@@ -40,7 +40,7 @@ function Thanks() {
         {/* Messaggio */}
         <div className="text-gray-600">
           <p>Il tuo messaggio è stato ricevuto correttamente.</p>
-          <p>Verrai aggiornato quando le porte si apriranno.</p>
+          <p>Verrai ricontattato il prima possibile.</p>
         </div>
 
         {/* Link di ritorno */}

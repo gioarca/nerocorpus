@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Head />
-      {/* <Navbar /> */}
+      <Navbar />
       <Router>
         <Pages />
       </Router>

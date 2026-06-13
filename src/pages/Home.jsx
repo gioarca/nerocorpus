@@ -10,6 +10,7 @@ import {
   LampDesk,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import Form from "../components/Form";
 
 const InstagramIcon = ({ className }) => (
   <svg
@@ -30,7 +31,7 @@ const InstagramIcon = ({ className }) => (
   </svg>
 );
 
-export default function App() {
+export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -140,100 +141,6 @@ export default function App() {
 
   return (
     <div className="bg-white text-black font-sans antialiased">
-      {/* Navigation */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 sm:h-20">
-            {/* Logo */}
-            <button
-              onClick={() => scrollToSection("home")}
-              className="shrink-0 group"
-            >
-              <span className="font-pirata-one text-xl sm:text-2xl font-black tracking-tighter text-black group-hover:text-red-900 transition-colors">
-                NERO CORPUS
-              </span>
-            </button>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
-              {["home", "studio", "chi-sono", "galleria", "contatti"].map(
-                (section) => (
-                  <button
-                    key={section}
-                    onClick={() => scrollToSection(section)}
-                    className={`px-3 lg:px-4 py-2 text-xs lg:text-sm tracking-wider font-semibold rounded-full transition-all duration-300 ${
-                      activeSection === section
-                        ? "bg-black text-white"
-                        : "text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    {section === "chi-sono" ? "chi sono" : section}
-                  </button>
-                ),
-              )}
-              {/* Instagram link */}
-              <a
-                href="https://www.instagram.com/nerocorpus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-2 p-2 text-gray-700 hover:text-red-900 transition-colors"
-                aria-label="Instagram"
-              >
-                <InstagramIcon />
-              </a>
-            </div>
-
-            {/* Mobile: Instagram + Hamburger */}
-            <div className="flex items-center gap-2 md:hidden">
-              <a
-                href="https://www.instagram.com/nerocorpus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-black hover:text-red-900 transition-colors"
-                aria-label="Instagram"
-              >
-                <InstagramIcon />
-              </a>
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="p-2 rounded-lg text-black hover:bg-gray-100 transition-colors"
-              >
-                {menuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            menuOpen ? "max-h-96" : "max-h-0"
-          }`}
-        >
-          <div className="bg-white border-t border-gray-100 px-4 py-4 space-y-2">
-            {["home", "studio", "chi-sono", "galleria", "contatti"].map(
-              (section) => (
-                <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl text-sm tracking-wider font-semibold transition-all ${
-                    activeSection === section
-                      ? "bg-black text-white"
-                      : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  {section === "chi-sono" ? "Chi Sono" : section}
-                </button>
-              ),
-            )}
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section
         id="home"
@@ -393,7 +300,6 @@ export default function App() {
       </section>
 
       {/* Gallery Section */}
-      {/* Gallery Section */}
       <section id="galleria" className="py-16 sm:py-24 lg:py-32 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
@@ -491,213 +397,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contatti"
-        className="py-16 sm:py-24 lg:py-32 px-4 bg-gray-50"
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 text-red-900 text-xs sm:text-sm uppercase tracking-wider font-bold mb-4">
-              <span>Contatti</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 font-pirata-one">
-              Prenota ora
-            </h2>
-            <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-              Inizia il tuo viaggio verso un tatuaggio indimenticabile
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-5 gap-8 lg:gap-12">
-            <div className="md:col-span-2 space-y-6">
-              <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-                <h3 className="text-xl sm:text-2xl font-black mb-6 font-pirata-one">
-                  Vieni a trovarci
-                </h3>
-                <div className="space-y-4">
-                  {/* Mappa */}
-                  <a
-                    href="https://maps.app.goo.gl/oheoVoJVqyKPyNbr9"
-                    className="flex items-start gap-4 group hover:bg-gray-50 p-3 -m-3 rounded-xl transition-colors"
-                  >
-                    <div className="flex items-start gap-4 group">
-                      <div className="mt-1 p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
-                        <MapPin className="text-red-900" size={20} />
-                      </div>
-
-                      <div>
-                        <p className="font-semibold text-black mb-1">
-                          Indirizzo
-                        </p>
-                        <p className="text-red-900">
-                          Via dell'Arma di Cavalleria 4 · Quinto di Treviso (TV)
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-
-                  {/* Mail */}
-                  <a
-                    href="mailto:martaconte.tattoo@gmail.com"
-                    className="flex items-start gap-4 group hover:bg-gray-50 p-3 -m-3 rounded-xl transition-colors"
-                  >
-                    <div className="mt-1 p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
-                      <Mail className="text-red-900" size={20} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-black mb-1">Email</p>
-                      <p className="text-gray-600 break-all">
-                        martaconte.tattoo@gmail.com
-                      </p>
-                    </div>
-                  </a>
-
-                  {/* Instagram nei contatti */}
-                  <a
-                    href="https://www.instagram.com/nerocorpus"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-4 group hover:bg-gray-50 p-3 -m-3 rounded-xl transition-colors"
-                  >
-                    <div className="mt-1 p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
-                      <InstagramIcon className="text-red-900" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-black mb-1">Instagram</p>
-                      <p className="text-gray-600">@nerocorpus</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Form */}
-            <div className="md:col-span-3">
-              <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-                <h3 className="text-xl sm:text-2xl font-black mb-6 font-pirata-one">
-                  Richiedi una consulenza
-                </h3>
-
-                <form ref={form} onSubmit={sendEmail} className="space-y-5">
-                  <div>
-                    <label
-                      htmlFor="user_name"
-                      className="block text-sm font-bold text-gray-700 mb-2"
-                    >
-                      Nome <span className="text-red-900">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="user_name"
-                      name="user_name"
-                      value={formValues.user_name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Il tuo nome"
-                      className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-4 py-3 text-black placeholder:text-gray-400 focus:outline-none focus:border-red-900 focus:bg-white transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="user_email"
-                      className="block text-sm font-bold text-gray-700 mb-2"
-                    >
-                      Email <span className="text-red-900">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="user_email"
-                      name="user_email"
-                      value={formValues.user_email}
-                      onChange={handleChange}
-                      required
-                      placeholder="tua@email.com"
-                      className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-4 py-3 text-black placeholder:text-gray-400 focus:outline-none focus:border-red-900 focus:bg-white transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="user_phone"
-                      className="block text-sm font-bold text-gray-700 mb-2"
-                    >
-                      Telefono{" "}
-                      <span className="text-gray-400 text-xs font-normal">
-                        (opzionale)
-                      </span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="user_phone"
-                      name="user_phone"
-                      value={formValues.user_phone}
-                      onChange={handleChange}
-                      placeholder="+39 123 456 7890"
-                      className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-4 py-3 text-black placeholder:text-gray-400 focus:outline-none focus:border-red-900 focus:bg-white transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-bold text-gray-700 mb-2"
-                    >
-                      Messaggio{" "}
-                      <span className="text-gray-400 text-xs font-normal">
-                        (opzionale)
-                      </span>
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formValues.message}
-                      onChange={handleChange}
-                      placeholder="Descrivi la tua idea per il tatuaggio..."
-                      rows="4"
-                      className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-4 py-3 text-black placeholder:text-gray-400 focus:outline-none focus:border-red-900 focus:bg-white transition-all resize-none"
-                    ></textarea>
-                  </div>
-
-                  <button
-                    disabled={isSubmitting}
-                    type="submit"
-                    className="w-full bg-black text-white py-4 rounded-2xl font-bold hover:bg-red-900 transition-all duration-500 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg hover:shadow-xl"
-                  >
-                    {isSubmitting ? (
-                      <span className="flex items-center justify-center gap-2">
-                        <svg
-                          className="animate-spin h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Invio in corso...
-                      </span>
-                    ) : (
-                      "Invia Richiesta"
-                    )}
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Form />
     </div>
   );
 }
