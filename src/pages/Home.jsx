@@ -301,7 +301,7 @@ export default function App() {
               <div className="space-y-3 sm:space-y-4">
                 <div className="inline-flex items-center gap-2 text-red-900 text-xs sm:text-sm uppercase tracking-wider font-bold">
                   <LampDesk size={16} />
-                  <span>Il Nostro Studio</span>
+                  <span>Lo Studio</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight font-pirata-one">
                   Dove l'arte prende vita
@@ -312,13 +312,13 @@ export default function App() {
                 <p>
                   Benvenuti da{" "}
                   <span className="font-bold text-black">Nero Corpus</span>, lo
-                  studio tattoo di riferimento nella provincia di Treviso.
-                  Creiamo opere d'arte uniche che raccontano la tua storia
-                  attraverso l'inchiostro.
+                  studio tattoo di riferimento a Quinto di Treviso. Creo opere
+                  d'arte uniche che raccontano la tua storia attraverso
+                  l'inchiostro.
                 </p>
                 <p>
-                  Marta combina tecnica impeccabile e creatività senza limiti
-                  per trasformare le tue idee in tatuaggi indimenticabili.
+                  Combino tecnica e creatività senza limiti per trasformare le
+                  tue idee in tatuaggi indimenticabili.
                 </p>
               </div>
 
@@ -350,7 +350,8 @@ export default function App() {
             </h2>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center order-2 lg:order-1 space-y-6 sm:space-y-8">
+            {/* Immagine di Marta */}
             <div className="max-w-md w-full">
               <div className="group relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-3xl">
                 <div className="relative aspect-3/4">
@@ -367,12 +368,31 @@ export default function App() {
                       Marta Conte
                     </h3>
                     <p className="text-base sm:text-lg text-white/80 font-light">
-                      Realistico & Ritratti
+                      Blackwork & Fine line
                     </p>
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-red-900/0 group-hover:bg-red-900/10 transition-all duration-500"></div>
               </div>
+            </div>
+
+            {/* descrizione di Marta */}
+            <div className="space-y-4 sm:space-y-6 text-gray-600 text-base sm:text-lg leading-relaxed">
+              <p>
+                Classe 2002, carattere da vendere e una passione sfrenata per
+                l'arte del tatuaggio. Mi chiamo Marta Conte e sono la mente
+                creativa dietro lo studio di NeroCorpus. Artista nata, ho
+                trasformato la mia passione in una professione, dedicandomi a
+                creare tatuaggi che non sono solo disegni, ma vere e proprie
+                opere d'arte sulla pelle. Con un occhio attento ai dettagli e
+                una mano ferma, mi impegno a realizzare ogni tatuaggio con
+                precisione e cura, assicurandomi che ogni cliente esca dal mio
+                studio con un pezzo unico che racconta la sua storia.
+                <span className="font-bold text-black">Nero Corpus</span>, lo
+                studio tattoo di riferimento a Quinto di Treviso. Creo opere
+                d'arte uniche che raccontano la tua storia attraverso
+                l'inchiostro.
+              </p>
             </div>
           </div>
         </div>
