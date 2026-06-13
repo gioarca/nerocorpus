@@ -350,9 +350,9 @@ export default function App() {
             </h2>
           </div>
 
-          <div className="flex justify-center order-2 lg:order-1 space-y-6 sm:space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Immagine di Marta */}
-            <div className="max-w-md w-full">
+            <div className="max-w-md mx-auto lg:mx-0 w-full">
               <div className="group relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-3xl">
                 <div className="relative aspect-3/4">
                   <img
@@ -360,9 +360,7 @@ export default function App() {
                     alt="Marta Conte"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  {/* Gradient overlay corretto */}
-                  <div className="absolute inset-0 bg-linear-to-t from-black via-black/30 to-transparent"></div>
-
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-black/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
                     <h3 className="text-2xl sm:text-3xl font-black mb-2">
                       Marta Conte
@@ -372,11 +370,11 @@ export default function App() {
                     </p>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-red-900/0 group-hover:bg-red-900/10 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-red-900/0 group-hover:bg-red-900/10 transition-all duration-500" />
               </div>
             </div>
 
-            {/* descrizione di Marta */}
+            {/* Descrizione di Marta */}
             <div className="space-y-4 sm:space-y-6 text-gray-600 text-base sm:text-lg leading-relaxed">
               <p>
                 Classe 2002, carattere da vendere e una passione sfrenata per
@@ -388,10 +386,6 @@ export default function App() {
                 una mano ferma, mi impegno a realizzare ogni tatuaggio con
                 precisione e cura, assicurandomi che ogni cliente esca dal mio
                 studio con un pezzo unico che racconta la sua storia.
-                <span className="font-bold text-black">Nero Corpus</span>, lo
-                studio tattoo di riferimento a Quinto di Treviso. Creo opere
-                d'arte uniche che raccontano la tua storia attraverso
-                l'inchiostro.
               </p>
             </div>
           </div>
