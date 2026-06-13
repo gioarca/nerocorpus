@@ -9,12 +9,12 @@ import "./index.css";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Head />
         <Navbar />
         <Pages />
         <Footer />
-      </BrowserRouter>
+      </Router>
     </>
   );
 }
