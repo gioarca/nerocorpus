@@ -80,7 +80,7 @@ export default function Form({ onSuccess }) {
   };
 
   return (
-    <div className="relative bg-white p-12 sm:p-12 rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+    <div className="relative bg-white p-12 sm:p-32 rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
       {/* Glow decorativo */}
       <div
         aria-hidden="true"
