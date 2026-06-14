@@ -29,7 +29,7 @@ const INITIAL_VALUES = {
 };
 
 const inputBase =
-  "w-full bg-gray-50 border-2 border-gray-200 rounded-2xl pl-12 pr-4 py-3.5 text-black placeholder:text-gray-400 focus:outline-none focus:border-red-900 focus:bg-white focus:ring-4 focus:ring-red-900/10 transition-all duration-200";
+  "w-full bg-gray-50 border-2 border-gray-200 rounded-2xl pl-12 pr-4 py-3 sm:py-3.5 text-sm sm:text-base text-black placeholder:text-gray-400 focus:outline-none focus:border-red-900 focus:bg-white focus:ring-4 focus:ring-red-900/10 transition-all duration-200";
 
 const labelClass = "block text-sm font-bold text-gray-700 mb-2";
 
@@ -80,15 +80,15 @@ export default function Form({ onSuccess }) {
   };
 
   return (
-    <div className="relative bg-white p-12 sm:p-32 rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+    <div className="relative w-full max-w-xl mx-auto bg-white p-6 sm:p-8 md:p-10 lg:p-12 rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
       {/* Glow decorativo */}
       <div
         aria-hidden="true"
-        className="absolute top-0 right-0 w-64 h-64 bg-red-900/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"
+        className="absolute top-0 right-0 w-40 sm:w-64 h-40 sm:h-64 bg-red-900/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"
       />
 
       <div className="relative">
-        <h3 className="text-xl sm:text-2xl font-black mb-2 font-pirata-one">
+        <h3 className="text-2xl sm:text-3xl font-black mb-2 font-pirata-one">
           Richiedi una consulenza
         </h3>
         <p className="text-sm text-gray-500 mb-6">
@@ -208,7 +208,7 @@ export default function Form({ onSuccess }) {
           </div>
 
           {/* Blocco consensi */}
-          <div className="space-y-3 p-5 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-200">
+          <div className="space-y-3 p-4 sm:p-5 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-200">
             <div className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed pb-3 border-b border-gray-200">
               <ShieldCheck size={16} className="text-red-900 mt-0.5 shrink-0" />
               <p>

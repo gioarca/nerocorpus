@@ -79,12 +79,7 @@ function Footer() {
             {" · "}
             C.F. <span className="font-mono">CNTMRT02S63L407G</span>
           </p>
-          <p>
-            Sede legale{" "}
-            <span className="font-mono">
-              Via Giovanni Boccaccio, 14 - Treviso (TV) - 31100
-            </span>
-          </p>
+          <p>Sede legale: Via Giovanni Boccaccio, 14 - Treviso (TV) - 31100</p>
           <p>
             Email:{" "}
             <a
