@@ -75,9 +75,15 @@ function Footer() {
             Italia
           </p>
           <p>
-            P.IVA <span className="font-mono">XXXXXXXXXXX</span>
+            P.IVA <span className="font-mono">05490170262</span>
             {" · "}
-            C.F. <span className="font-mono">CNTMRTXXXXXXXXXX</span>
+            C.F. <span className="font-mono">CNTMRT02S63L407G</span>
+          </p>
+          <p>
+            Sede legale{" "}
+            <span className="font-mono">
+              Via Giovanni Boccaccio, 14 - Treviso (TV) - 31100
+            </span>
           </p>
           <p>
             Email:{" "}
