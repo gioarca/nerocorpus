@@ -285,14 +285,22 @@ export default function Home() {
             <div className="space-y-4 sm:space-y-6 text-gray-600 text-base sm:text-lg leading-relaxed">
               <p>
                 Classe 2002, carattere da vendere e una passione sfrenata per
-                l'arte del tatuaggio. Mi chiamo Marta Conte e sono la mente
-                creativa dietro lo studio di NeroCorpus. Artista nata, ho
-                trasformato la mia passione in una professione, dedicandomi a
-                creare tatuaggi che non sono solo disegni, ma vere e proprie
-                opere d'arte sulla pelle. Con un occhio attento ai dettagli e
-                una mano ferma, mi impegno a realizzare ogni tatuaggio con
-                precisione e cura, assicurandomi che ogni cliente esca dal mio
-                studio con un pezzo unico che racconta la sua storia.
+                l'arte del tatuaggio.{" "}
+              </p>
+              <p className="mt-2">
+                Mi chiamo Marta Conte e sono la mente creativa dietro lo studio
+                di NeroCorpus.{" "}
+              </p>
+              <p className="mt-2">
+                Artista nata, ho trasformato la mia passione in una professione,
+                dedicandomi a creare tatuaggi che non sono solo disegni, ma vere
+                e proprie opere d'arte sulla pelle.{" "}
+              </p>
+              <p className="mt-2">
+                Con un occhio attento ai dettagli e una mano ferma, mi impegno a
+                realizzare ogni tatuaggio con precisione e cura, assicurandomi
+                che ogni cliente esca dal mio studio con un pezzo unico che
+                racconta la sua storia.
               </p>
             </div>
           </div>
