@@ -257,8 +257,7 @@ const DEFAULT_STUDIO = {
   placeId: null,
   // Google Maps → Condividi → Incorpora una mappa → copia solo il valore di src.
   mapEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.9781470902362!2d12.164092376028673!3d45.6307020223144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477935e710298141%3A0xc18f6495b947dc94!2snerocorpus!5e1!3m2!1sit!2sit!4v1793616942500!5m2!1sit!2sit",
-  // Note pratiche mostrate sotto (facoltative).
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.978147090245!2d12.164092376028435!3d45.63070202231423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477935e710298141%3A0xc18f6495b947dc94!2snerocorpus!5e1!3m2!1sit!2sit!4v1793862731187!5m2!1sit!2sit", // Note pratiche mostrate sotto (facoltative).
   notes: {
     car: "Parcheggio gratuito davanti all'ingresso.",
     // transit: "Fermata bus a 200 m, linea 1.",
