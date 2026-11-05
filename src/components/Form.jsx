@@ -89,8 +89,9 @@ export default function Form({ onSuccess }) {
 
       <div className="relative">
         <h3 className="text-2xl sm:text-3xl font-black mb-2 font-pirata-one">
-          Richiedi una consulenza
+          Richiedi una consulenza gratuita
         </h3>
+        <p className="text-sm text-black mb-6">Senza impegno eh!</p>
         <p className="text-sm text-gray-500 mb-6">
           Compila il modulo, ti risponderò il prima possibile.
         </p>
