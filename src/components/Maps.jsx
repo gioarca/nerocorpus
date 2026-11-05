@@ -421,7 +421,7 @@ import {
   Copy,
   Check,
   Car,
-  // Bus, // riattivalo insieme alla modalità "transit"
+  Bus,
   Footprints,
 } from "lucide-react";
 
@@ -441,6 +441,7 @@ const DEFAULT_STUDIO = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.978147090245!2d12.164092376028435!3d45.63070202231423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477935e710298141%3A0xc18f6495b947dc94!2snerocorpus!5e1!3m2!1sit!2sit!4v1793862731187!5m2!1sit!2sit", // Note pratiche mostrate sotto (facoltative).
   notes: {
     car: "Parcheggio gratuito davanti all'ingresso.",
+    // Facoltativa: compare sotto i pulsanti quando è scelto "Mezzi pubblici".
     // transit: "Fermata bus a 200 m, linea 1.",
     walk: "A 10 min a piedi dal centro di Quinto di Treviso",
   },
@@ -448,7 +449,7 @@ const DEFAULT_STUDIO = {
 
 const TRAVEL_MODES = [
   { id: "driving", label: "Auto", icon: Car, noteKey: "car" },
-  //   { id: "transit", label: "Mezzi", icon: Bus, noteKey: "transit" },
+  { id: "transit", label: "Mezzi pubblici", icon: Bus, noteKey: "transit" },
   { id: "walking", label: "A piedi", icon: Footprints, noteKey: "walk" },
 ];
 
@@ -514,7 +515,7 @@ export default function ComeRaggiungere({ studio = DEFAULT_STUDIO }) {
                 type="button"
                 aria-pressed={mode === id}
                 onClick={() => setMode(id)}
-                className={`flex flex-1 flex-col items-center gap-1 rounded-lg border px-2 py-2.5 text-xs font-medium transition-colors ${
+                className={`flex flex-1 flex-col items-center gap-1 rounded-lg border px-2 py-2.5 text-center text-xs font-medium leading-tight transition-colors ${
                   mode === id
                     ? "border-neutral-900 bg-neutral-900 text-white"
                     : "border-neutral-200 text-neutral-600 hover:bg-neutral-50"
