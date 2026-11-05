@@ -283,7 +283,7 @@ export default function Home() {
 
             {/* Descrizione di Marta */}
             <div className="space-y-4 sm:space-y-6 text-gray-600 text-base sm:text-lg leading-relaxed">
-              <p>
+              <p className="mb-2">
                 Classe 2002, carattere da vendere e una passione sfrenata per
                 l'arte del tatuaggio.{" "}
               </p>
