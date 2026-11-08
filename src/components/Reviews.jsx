@@ -156,7 +156,10 @@ export default function Reviews() {
             <div className="text-left">
               <Stars value={rating} size={20} />
               <p className="text-sm text-black/60 mt-1.5">
-                su {total} {total === 1 ? "recensione" : "recensioni"} Google
+                su Google · {total} {total === 1 ? "recensione" : "recensioni"}
+              </p>
+              <p className="text-xs text-black/40 mt-0.5">
+                dati di {formatMonth(updatedAt)}
               </p>
             </div>
           </div>
@@ -190,29 +193,48 @@ export default function Reviews() {
               className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
             />
           </a>
-          {writeReviewUrl && (
+          {showSticker ? (
+            // Adesivo ufficiale del Marketing Kit Google: va mostrato così com'è
             <a
-              href={writeReviewUrl}
+              href={writeReviewUrl || reviewsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full text-sm font-bold hover:bg-red-900 hover:text-black transition-all duration-500"
+              className="inline-block transition-transform duration-300 hover:scale-105"
             >
-              Lascia una recensione
-              <ArrowUpRight
-                size={16}
-                className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
+              <img
+                src={stickerSrc}
+                alt="Lascia una recensione su Google"
+                onError={() => setStickerFailed(true)}
+                className="h-14 sm:h-16 w-auto max-w-[260px] object-contain"
               />
             </a>
+          ) : (
+            writeReviewUrl && (
+              <a
+                href={writeReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full text-sm font-bold hover:bg-red-900 hover:text-black transition-all duration-500"
+              >
+                Lascia una recensione
+                <ArrowUpRight
+                  size={16}
+                  className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
+                />
+              </a>
+            )
           )}
         </div>
 
-        <div className="mt-8 text-xs text-black/40 text-center max-w-xl mx-auto leading-relaxed">
-          <p>
-            Recensioni pubblicate su Google e riportate senza modifiche; lo
-            studio non verifica l'identità degli autori.
-          </p>
-          <p> {updatedAt && ` Dati aggiornati a ${formatMonth(updatedAt)}.`}</p>
-        </div>
+        {reviews.length > 0 && (
+          <div className="mt-8 text-xs text-black/40 text-center max-w-xl mx-auto leading-relaxed">
+            <p>
+              Recensioni pubblicate su Google e riportate senza modifiche, con
+              il consenso degli autori; lo studio non verifica l'identità di chi
+              le scrive.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
