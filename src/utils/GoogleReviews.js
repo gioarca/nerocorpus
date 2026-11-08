@@ -12,9 +12,9 @@
 // oppure valutazione + numero compilati.
 
 export const googleProfile = {
-  rating: null, // valutazione media, es. 4.9
-  total: null, // numero totale di recensioni, es. 37
-  updatedAt: null, // mese dell'ultimo aggiornamento, formato "AAAA-MM"
+  rating: 5.0, // valutazione media, es. 4.9
+  total: 10, // numero totale di recensioni, es. 37
+  updatedAt: "2026-11", // mese dell'ultimo aggiornamento, formato "AAAA-MM"
 
   // "Leggi tutte su Google": profilo Google dello studio → Condividi → copia link.
   // Finché non lo cambi apre la ricerca dello studio su Google Maps.
@@ -23,7 +23,7 @@ export const googleProfile = {
 
   // "Lascia una recensione": Profilo dell'attività → "Chiedi recensioni" → copia link.
   // È lo stesso link di GOOGLE_REVIEW_URL nella dashboard. Vuoto = pulsante nascosto.
-  writeReviewUrl: "",
+  writeReviewUrl: "https://g.page/r/CZTcR7mVZI_BEBM/review",
 };
 
 export const googleReviews = [
