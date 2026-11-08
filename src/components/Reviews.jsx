@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Star, ArrowUpRight } from "lucide-react";
-import { googleProfile, googleReviews } from "../../utils/Googlereviews.js";
+import { googleProfile, googleReviews } from "../utils/GoogleReviews.js";
 
 const LONG_TEXT = 280;
 
