@@ -24,6 +24,7 @@ export const googleProfile = {
   // "Lascia una recensione": Profilo dell'attività → "Chiedi recensioni" → copia link.
   // È lo stesso link di GOOGLE_REVIEW_URL nella dashboard. Vuoto = pulsante nascosto.
   writeReviewUrl: "https://g.page/r/CZTcR7mVZI_BEBM/review",
+  stickerSrc: "/public/images/sticker-google-reviews.png",
 };
 
 export const googleReviews = [

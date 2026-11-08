@@ -117,14 +117,17 @@ const gridByCount = (n) => {
 };
 
 export default function Reviews() {
+  const [stickerFailed, setStickerFailed] = useState(false);
   const reviews = googleReviews.filter(
     (r) => import.meta.env.DEV || !r.esempio,
   );
-  const { rating, total, updatedAt, reviewsUrl, writeReviewUrl } =
+  const { rating, total, updatedAt, reviewsUrl, writeReviewUrl, stickerSrc } =
     googleProfile;
-  const hasSummary = typeof rating === "number" && total > 0;
+  // Google chiede di indicare la valutazione "su Google" con la data a cui si riferisce
+  const hasSummary = typeof rating === "number" && total > 0 && !!updatedAt;
+  const showSticker = !!stickerSrc && !stickerFailed;
 
-  if (reviews.length === 0 && !hasSummary) return null;
+  if (reviews.length === 0 && !hasSummary && !showSticker) return null;
 
   return (
     <section
@@ -203,11 +206,13 @@ export default function Reviews() {
           )}
         </div>
 
-        <p className="mt-8 text-xs text-black/40 text-center max-w-xl mx-auto leading-relaxed">
-          Recensioni pubblicate su Google e riportate senza modifiche; lo studio
-          non verifica l'identità degli autori.
-          {updatedAt && ` Dati aggiornati a ${formatMonth(updatedAt)}.`}
-        </p>
+        <div className="mt-8 text-xs text-black/40 text-center max-w-xl mx-auto leading-relaxed">
+          <p>
+            Recensioni pubblicate su Google e riportate senza modifiche; lo
+            studio non verifica l'identità degli autori.
+          </p>
+          <p> {updatedAt && ` Dati aggiornati a ${formatMonth(updatedAt)}.`}</p>
+        </div>
       </div>
     </section>
   );
