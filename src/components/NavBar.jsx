@@ -21,7 +21,14 @@ const InstagramIcon = ({ className }) => (
   </svg>
 );
 
-const SECTIONS = ["home", "studio", "chi-sono", "galleria", "contatti"];
+const SECTIONS = [
+  "home",
+  "studio",
+  "chi-sono",
+  "galleria",
+  "recensioni",
+  "contatti",
+];
 const NAV_OFFSET = 80;
 
 export default function NavBar() {

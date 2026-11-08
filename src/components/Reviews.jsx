@@ -49,7 +49,8 @@ const Stars = ({ value, size = 16 }) => {
     >
       {row("text-black/20")}
       <div className="absolute inset-0 overflow-hidden" style={{ width }}>
-        {row("text-black")}
+        {/* giallo classico delle valutazioni, come le stelle su Google */}
+        {row("text-amber-400")}
       </div>
     </div>
   );
